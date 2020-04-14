@@ -1,0 +1,24 @@
+{
+  "Comment": "A Hello World machine using Activity Worker",
+  "StartAt": "Hello",
+  "States": {
+    "Hello": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:eu-central-1:436321073706:activity:HelloWorld",
+      "End": true,
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "Next": "Error"
+        }
+      ]
+    },
+    "Error": {
+      "Type": "Pass",
+      "Result": "There where an error",
+      "End": true
+    }
+  }
+}
